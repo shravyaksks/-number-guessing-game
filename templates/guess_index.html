@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Number Guessing Game</h1>
+    {% if not finished %}
+        <form method="POST">
+            <label for="guess">Enter your guess (1-100):</label>
+            <input type="number" name="guess" id="guess" min="1" max="100" required>
+            <button type="submit">Submit</button>
+        </form>
+    {% else %}
+        <a href="{{ url_for('reset') }}"><button>Play Again</button></a>
+    {% endif %}
+
+    {% if message %}
+        <div class="result">
+            <h2>{{ message }}</h2>
+        </div>
+    {% endif %}
+
+    <p><a href="{{ url_for('history') }}">View Game History</a></p>
+</div>
+</body>
+</html>

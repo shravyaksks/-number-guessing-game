@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guessing Game History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Game History</h1>
+    {% if games %}
+        <table>
+            <tr>
+                <th>Target Number</th>
+                <th>Attempts</th>
+            </tr>
+            {% for g in games %}
+            <tr>
+                <td>{{ g.number }}</td>
+                <td>{{ g.attempts }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No games played yet.</p>
+    {% endif %}
+    <a href="{{ url_for('game') }}">Back to Game</a>
+</div>
+</body>
+</html>
